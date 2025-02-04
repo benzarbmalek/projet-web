@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add a travel offer </title>
+    </head>
+   <body>
+     <h2>Add a travel offer</h2>
+     <table>
+        <form>
+            <label>Title :</label>
+            <input type="text">
+            <br>
+            <label>Destination :</label>
+            <input type="text">
+            <br>
+            <label>Departure Date :</label>
+            <input type="date">
+            <br>
+            <label>Return Date :</label>
+            <input type="date">
+            <br>
+            <label>Price :</label>
+            <input type="number"> 
+            <br>
+            <label>
+                <input type="checkbox" name="av" value="Availability" checked >
+                Availability
+            </label>
+            <br>
+            <label for="category">Catégorie :</label>
+             <select id="category" name="category" required>
+                <option value="plage">Plage</option>
+                <option value="montagne">Montagne</option>
+                <option value="aventure">Aventure</option>
+                <option value="culture">Culture</option>
+             </select>
+             <br>
+            <button type="submit">Add Offer</button>
+        </form>
+     </table>
+    </body>
+</html>
