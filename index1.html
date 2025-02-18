@@ -19,6 +19,84 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <title>Add Offer</title>
+    <!--<style>
+    
+        .error { color: red; font-size: 12px; display: block; margin-top: 2px; }
+        .success { color: green; font-size: 12px; display: block; margin-top: 2px; }
+        input { display: block; margin-bottom: 5px; }
+    </style> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 0.8em;
+            margin-top: 5px;
+            display: block;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+      
 
 </head>
 
@@ -295,40 +373,225 @@
 
                     
             </div>
-            <h2>Add a travel offer</h2>
+            
+            
+    <!-- <h2>Add a travel offer</h2>
      <table>
-        <form>
-            <label>Title :</label>
-            <input type="text">
-            <br>
-            <label>Destination :</label>
-            <input type="text">
-            <br>
-            <label>Departure Date :</label>
-            <input type="date">
-            <br>
-            <label>Return Date :</label>
-            <input type="date">
-            <br>
-            <label>Price :</label>
-            <input type="number"> 
-            <br>
-            <label>
-                <input type="checkbox" name="av" value="Availability" checked >
-                Availability
-            </label>
-            <br>
-            <label for="category">Catégorie :</label>
-             <select id="category" name="category" required>
-                <option value="plage">Plage</option>
-                <option value="montagne">Montagne</option>
-                <option value="aventure">Aventure</option>
-                <option value="culture">Culture</option>
-             </select>
-             <br>
+        <form id="offerForm" onsubmit="return validerFormulaire()">
+            <tr>
+                <td><label for="titre">Title :</label></td>
+                <td><input type="text" id="titre" name="titre" required></td>
+            </tr>
+            <tr>
+                <td><label for="destination">Destination :</label></td>
+                <td><input type="text" id="destination" name="destination" required></td>
+            </tr>
+            <tr>
+                <td><label for="dateDepart">Departure Date :</label></td>
+                <td><input type="date" id="dateDepart" name="dateDepart" required></td>
+            </tr>
+            <tr>
+                <td><label for="dateRetour">Return Date :</label></td>
+                <td><input type="date" id="dateRetour" name="dateRetour" required></td>
+            </tr>
+            <tr>
+                <td><label for="prix">Price :</label></td>
+                <td><input type="number" id="prix" name="prix" min="0" required></td>
+            </tr>
+            <tr>
+                <td><label for="availability">Availability :</label></td>
+                <td><input type="checkbox" id="availability" name="availability" checked></td>
+            </tr>
+            <tr>
+                <td><label for="category">Category :</label></td>
+                <td>
+                    <select id="category" name="category" required>
+                        <option value="plage">Plage</option>
+                        <option value="montagne">Montagne</option>
+                        <option value="aventure">Aventure</option>
+                        <option value="culture">Culture</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Add Offer</button></td>
+            </tr>
+        </form>
+        <script src="addOffer.js"></script>
+    </table> -->
+
+   
+    <div class="form-container">
+        <h1>Add Offer</h1>
+        <form id="offerForm">
+            <div class="form-group">
+                <label for="titre">Title :</label>
+                <input type="text" id="titre" name="titre" required>
+                <span id="titreError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination :</label>
+                <input type="text" id="destination" name="destination" required>
+                <span id="destinationError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="dateDepart">Departure Date :</label>
+                <input type="date" id="dateDepart" name="dateDepart" required>
+                <span id="dateDepartError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="dateRetour">Return Date :</label>
+                <input type="date" id="dateRetour" name="dateRetour" required>
+                <span id="dateRetourError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="prix">Price :</label>
+                <input type="number" id="prix" name="prix" min="0" required>
+                <span id="prixError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="availability">Availability :</label>
+                <input type="checkbox" id="availability" name="availability" checked>
+            </div>
+            <div class="form-group">
+                <label for="category">Category :</label>
+                <select id="category" name="category" required>
+                    <option value="plage">Plage</option>
+                    <option value="montagne">Montagne</option>
+                    <option value="aventure">Aventure</option>
+                    <option value="culture">Culture</option>
+                </select>
+            </div>
             <button type="submit">Add Offer</button>
         </form>
-     </table>
+    </div>
+
+    <script>
+        document.getElementById('offerForm').addEventListener('submit', function (event) {
+            event.preventDefault(); 
+            clearMessages();
+
+            let titre = document.getElementById('titre').value.trim();
+            let destination = document.getElementById('destination').value.trim();
+            let dateDepart = document.getElementById('dateDepart').value;
+            let dateRetour = document.getElementById('dateRetour').value;
+            let prix = document.getElementById('prix').value.trim();
+
+            if (titre.length < 3) {
+                showError('titreError', 'Le titre doit contenir au moins 3 caractères.');
+            } else {
+                showSuccess('titreError', 'Correct');
+            }
+
+            let destinationRegex = /^[A-Za-z\s]{3,}$/;
+            if (!destinationRegex.test(destination)) {
+                showError('destinationError', 'La destination doit contenir uniquement des lettres et des espaces, et au moins 3 caractères.');
+            } else {
+                showSuccess('destinationError', 'Correct');
+            }
+
+            if (!dateDepart || !dateRetour) {
+                showError('dateDepartError', 'Veuillez sélectionner une date valide.');
+                showError('dateRetourError', 'Veuillez sélectionner une date valide.');
+            } else if (new Date(dateRetour) <= new Date(dateDepart)) {
+                showError('dateRetourError', 'La date de retour doit être ultérieure à la date de départ.');
+            } else {
+                showSuccess('dateDepartError', 'Correct');
+                showSuccess('dateRetourError', 'Correct');
+            }
+
+            let prixNumber = parseFloat(prix);
+            if (isNaN(prixNumber) || prixNumber <= 0) {
+                showError('prixError', 'Le prix doit être un nombre positif.');
+            } else {
+                showSuccess('prixError', 'Correct');
+            }
+
+            if (document.querySelectorAll('.error-message:not(:empty)').length === 0) {
+                alert('Formulaire valide. L\'offre peut être ajoutée.');
+            }
+        });
+
+        function showError(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+            document.getElementById(elementId).className = 'error-message';
+        }
+
+        function showSuccess(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+            document.getElementById(elementId).className = 'success-message';
+        }
+
+        function clearMessages() {
+            let messageElements = document.querySelectorAll('.error-message, .success-message');
+            messageElements.forEach(function (element) {
+                element.textContent = '';
+            });
+        }
+    </script>
+
+    <!--<label for="title">Title :</label>
+    <input type="text" id="title">
+    <span id="titleMessage"></span>
+    <br><br>
+
+    <label for="destination">Destination :</label>
+    <input type="text" id="destination">
+    <span id="destinationMessage"></span>
+    <br> 
+    <label>Departure Date :</label>
+    <input type="date">
+    <br>
+    <label>Return Date :</label>
+    <input type="date">
+    <br>
+    <label>Price :</label>
+    <input type="number"> 
+    <br>
+    <label>
+        <input type="checkbox" name="av" value="Availability" checked >
+        Availability
+    </label>
+    <br>
+    <label for="category">Catégorie :</label>
+     <select id="category" name="category" required>
+        <option value="plage">Plage</option>
+        <option value="montagne">Montagne</option>
+        <option value="aventure">Aventure</option>
+        <option value="culture">Culture</option>
+     </select>
+     <br>
+    <button type="submit">Add Offer</button>
+
+    <script>
+        document.getElementById('title').addEventListener('keyup', function() {
+            let title = this.value;
+            let message = document.getElementById('titleMessage');
+
+            if (title.length >= 3) {
+                message.textContent = "Correct";
+                message.className = "success";
+            } else {
+                message.textContent = "Erreur: Au moins 3 caractères requis";
+                message.className = "error";
+            }
+        });
+
+        document.getElementById('destination').addEventListener('keyup', function() {
+            let destination = this.value;
+            let message = document.getElementById('destinationMessage');
+            let regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/; // Autorise lettres et espaces uniquement
+
+            if (destination.length >= 3 && regex.test(destination)) {
+                message.textContent = "Correct";
+                message.className = "success";
+            } else {
+                message.textContent = "Erreur: Lettres et espaces uniquement, min 3 caractères";
+                message.className = "error";
+            }
+        });
+    </script>-->
+     
     </body>
 
             <!-- Footer -->
